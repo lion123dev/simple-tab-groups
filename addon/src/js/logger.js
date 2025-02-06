@@ -1,4 +1,3 @@
-
 import * as Constants from './constants.js';
 import JSON from './json.js';
 import * as Utils from './utils.js';
@@ -364,7 +363,12 @@ function errorEventHandler(event) {
     showErrorNotificationMessage(logger);
 }
 
-function showErrorNotificationMessage(logger) {
+async function showErrorNotificationMessage(logger) {
+    const { disableNotifications } = await browser.storage.local.get('disableNotifications');
+    if (disableNotifications) {
+        return;
+    }
+
     if (Constants.IS_BACKGROUND_PAGE) {
         self.onBackgroundMessage('show-error-notification', self);
     } else {

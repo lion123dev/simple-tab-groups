@@ -760,6 +760,12 @@
                 </label>
             </div>
             <div class="field">
+                <label class="checkbox">
+                    <input v-model="options.disableNotifications" type="checkbox" />
+                    <span v-text="lang('disableNotifications')"></span>
+                </label>
+            </div>
+            <div class="field">
                 <button class="button is-success" @click="openDefaultGroup">
                     <span class="icon">
                         <img class="size-16" src="/icons/icon.svg" />
@@ -862,7 +868,7 @@
                                     <option v-if="hotkey.groupId && !groupIds.includes(hotkey.groupId)" disabled :value="hotkey.groupId" v-text="lang('unknownGroup')"></option>
                                     <option v-for="group in groups" :key="group.id" :value="group.id" v-text="getGroupTitle(group)"></option>
                                 </select>
-                            </div>
+                            </span>
                             <span class="icon is-left" v-if="hotkey.groupId">
                                 <img class="size-16" :src="getGroupIconUrl(hotkey.groupId)">
                             </span>

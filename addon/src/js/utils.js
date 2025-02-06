@@ -1,4 +1,3 @@
-
 import * as Constants from './constants.js';
 import JSON from './json.js';
 
@@ -138,6 +137,11 @@ export function sliceText(text, length = 50) {
 }
 
 export async function notify(message, sec = 20, id = null, iconUrl = null, onClick = null, onClose = null) {
+    const { disableNotifications } = await browser.storage.local.get('disableNotifications');
+    if (disableNotifications) {
+        return;
+    }
+
     if (id) {
         await browser.notifications.clear(id);
     } else {

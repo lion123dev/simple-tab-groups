@@ -1,4 +1,3 @@
-
 export const MANIFEST = Object.freeze(browser.runtime.getManifest());
 export const STG_BASE_URL = browser.runtime.getURL('');
 
@@ -334,6 +333,8 @@ export const DEFAULT_OPTIONS = Object.freeze({
             groupId: 0,
         },
     ],
+
+    disableNotifications: false, // Pdb44
 });
 
 export const ONLY_BOOL_OPTION_KEYS = Object.freeze(Object.keys(DEFAULT_OPTIONS).filter(key => 'boolean' === typeof DEFAULT_OPTIONS[key]));
